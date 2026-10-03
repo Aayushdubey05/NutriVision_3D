@@ -38,8 +38,7 @@ class FoodSegmenter:
                 "mask": segmentation.astype(np.uint8),
                 "bbox": [int(x), int(y), int(w), int(h)],
                 "crop": crop,
-                "area": int(area),
-
+                "area": int(area),            
             })
 
             

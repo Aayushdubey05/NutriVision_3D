@@ -47,6 +47,15 @@ def resize_depth_map(
     target_size: Tuple[int, int]
 ) -> np.ndarray:
     height, width = target_size
+    if depth.size == 0:
+        return np.zeros((height, width), dtype=np.float32)
+    if depth.ndim == 3 and depth.shape[2] == 1:
+        depth = depth.squeeze(2)
+    elif depth.ndim != 2:
+        return np.zeros((height, width), dtype=np.float32)
+    # OpenCV doesn't support float16, convert to float32
+    if depth.dtype == np.float16:
+        depth = depth.astype(np.float32)
     return cv2.resize(
         depth,
         (width, height),

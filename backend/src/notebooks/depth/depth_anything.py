@@ -8,9 +8,9 @@ from transformers import (
     AutoImageProcessor,
     AutoModelForDepthEstimation, 
 )
-from base import BaseDepthEstimator
-from schema import DepthResult
-from utils import (get_device, 
+from .base import BaseDepthEstimator
+from .schema import DepthResult
+from .utils import (get_device,
                     validate_image, 
                     bgr_to_rgb, 
                     normalize_depth, 
@@ -86,7 +86,7 @@ class DepthAnythingEstimator(BaseDepthEstimator):
         )
 
     def visualize(self, image: np.ndarray,) -> np.ndarray:
-        from utils import apply_colormap
+        from .utils import apply_colormap
         result = self.estimate(image)
         return apply_colormap(
             result.normalized_depth
@@ -98,5 +98,4 @@ class DepthAnythingEstimator(BaseDepthEstimator):
 
 
 
-        
         

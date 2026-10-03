@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import numpy as np 
 
-from schema import DepthResult
+from .schema import DepthResult
 
 class BaseDepthEstimator(ABC):
 
